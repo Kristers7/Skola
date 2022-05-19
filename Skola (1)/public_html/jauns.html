@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Dzimšanas dienu kalkulators</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <h2>Gaidot dzimšanas dienu..</h2>
+        </header>
+        <hr>
+        <form>
+            <p>Ievadi pilnu datumu, kad Tev būs tuvākā dzimšanas diena.</p>
+            <p>Gads</p>
+            <input type="text" id="gads" name="gads">
+            <p>Mēnesis</p>
+            <input type="text" id="menesis" name="menesis">
+            <p>Diena</p>
+            <input type="text" id="datums" name="datums">
+            <p></p>
+            <input type="button" name="poga" value="Aprēķināt dienu skaitu līdz dzimšanas dienai" onclick="dienas1()">
+
+            <p>Līdz svētkiem atlikušas</p>
+            <input type="text" id="dienas" name="dienas">
+            <p>dienas : )) </p>
+        </form>
+        <script>
+            function dienas1() {
+                var dienax1 = 1000 * 60 * 60 * 24;
+                var n = new Date();
+                var gads = document.getElementById('gads').value;
+                var menesis = document.getElementById('menesis').value - 1;
+                var diena = document.getElementById('datums').value;
+                var datums1 = new Date(gads, menesis, diena);
+                var starpiba = Math.round(datums1.getTime() - n.getTime()) / (dienax1);
+                var rezultats = document.getElementById('dienas');
+                rezultats.value = starpiba.toFixed(0);
+            }
+        </script>
+
+    </body>
+</html>
